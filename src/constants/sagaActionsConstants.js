@@ -1,0 +1,1 @@
+export const GET_COURSES_SAGA = 'GET_COURSES_SAGA';
