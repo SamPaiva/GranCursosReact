@@ -1,13 +1,13 @@
 import {takeLatest, put, call} from 'redux-saga/effects';
-import * as actions from '../actions/sagaActionsConstants';
-import * as types from '../reducers/reducerActionTypes';
+import * as actions from './sagaActionsConstants';
 import {getCourses} from '../services/request';
 
-export function* getCoursesAsync(){
-    
-    const response = yield call(getCourses);
+const GET_COURSES = 'GET_COURSES';
 
-    yield put({type: types.GET_COURSES, payload: {response}});
+export function* getCoursesAsync(){
+
+    const response = yield call(getCourses);
+    yield put({type: GET_COURSES, payload: response.data});
 }
 
 

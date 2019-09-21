@@ -5,35 +5,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {Redirect, Link} from 'react-router-dom';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  nav: {
-      backgroundColor: '#9400d3',
-      margin: 0
-  },
-  removeSublimed: {
-      textDecoration: 'none'
-  }
-}));
+import styles from '../styles/navbar';
 
 export default function MenuAppBar() {
-  const classes = useStyles();
+  const classes = styles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -95,9 +73,7 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem><Link className={classes.removeSublimed} to="/courses">Cursos</Link></MenuItem>
-                <MenuItem onClick={handleClose}>Meu Perfil</MenuItem>
-                <MenuItem onClick={handleClose}>Favoritos</MenuItem>
-                <MenuItem onClick={handleClose}>Sair</MenuItem>
+                <MenuItem><Link className={classes.removeSublimed} to="/profile">Meu Perfil</Link></MenuItem>
               </Menu>
             </div>
           )}
